@@ -16,6 +16,7 @@ public class BallGenerator : MonoBehaviour
             Object.Destroy(transform.GetChild(0).gameObject);
         }
         GameObject newBall = Object.Instantiate(BallPrefab, transform);
+        newBall.transform.localScale.Set(1, 1, 1);
         newBall.GetComponent<Rigidbody>().AddForce(direction * force);
     }
 

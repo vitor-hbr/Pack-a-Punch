@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandPresence : MonoBehaviour
 {
     public InputDeviceCharacteristics controllerCharacteristics;    
-    private InputDevice targetDevice;
     public Animator handAnimator;
+    private InputDevice targetDevice;
+    private XRDirectInteractor xrDirectInteractor;
 
     void Start()
     {
         TryInitialize();
+        xrDirectInteractor = gameObject.GetComponentInParent<XRDirectInteractor>();
     }
 
     void TryInitialize()
@@ -38,6 +41,14 @@ public class HandPresence : MonoBehaviour
 
         if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
         {
+            if (gripValue > 0.85)
+            {
+                StartCoroutine(checkIfSelecting());
+            }
+            else
+            {
+                xrDirectInteractor.allowSelect = true;
+            }
             handAnimator.SetFloat("Grip", gripValue);
         }
         else
@@ -46,6 +57,14 @@ public class HandPresence : MonoBehaviour
         }
     }
 
+    IEnumerator checkIfSelecting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (!xrDirectInteractor.hasSelection && !xrDirectInteractor.hasHover)
+        {
+            xrDirectInteractor.allowSelect = false;
+        }
+    }
     void Update()
     {
         if(!targetDevice.isValid)

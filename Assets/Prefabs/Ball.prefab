@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2460367800614355596}
   - component: {fileID: 2460367800614355597}
   - component: {fileID: 4422037667719782405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,19 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4422037667719782405}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+        m_MethodName: toggleFreeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -228,7 +240,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 0
+  m_ForceGravityOnDetach: 1
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
 --- !u!114 &4422037667719782405
@@ -243,4 +255,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf452151e96bbb4081657afbcfcc3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyHeight: -50
+  distance: 500
+  OriginalMaterial: {fileID: 2100000, guid: 651851344e516724abca5e889ef67cc5, type: 2}
+  FrozenMaterial: {fileID: 2100000, guid: 622fc18c39a7da74c8d9a7bdfac019dd, type: 2}

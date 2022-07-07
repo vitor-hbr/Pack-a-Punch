@@ -11,7 +11,17 @@ public class Ball : MonoBehaviour
     private Vector3 initialPosition;
     private Rigidbody rb;
     private MeshRenderer meshRenderer;
-
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        initialPosition = transform.localPosition;
+    }
+    void Update()
+    {
+        if (Vector3.Distance(transform.localPosition, initialPosition) > distance)
+            Object.Destroy(transform.gameObject);
+    }
     public void toggleFreeze()
     {
         isFrozen = !isFrozen;
@@ -25,17 +35,6 @@ public class Ball : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             meshRenderer.material = FrozenMaterial;
         }
-    }
-    void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        initialPosition = transform.localPosition;
-    }
-    void Update()
-    {
-        if (Vector3.Distance(transform.localPosition, initialPosition) > distance)
-            Object.Destroy(transform.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

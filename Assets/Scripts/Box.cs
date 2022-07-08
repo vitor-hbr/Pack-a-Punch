@@ -5,9 +5,10 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     [SerializeField] GameObject explosionPrefab;
-    [SerializeField] int timeInSecondsRemoveExplosion = 1;
+    [SerializeField] float timeInSecondsRemoveExplosion = 1.5f;
     private GameObject explosionObject;
     ParticleSystem ps;
+    MeshRenderer meshRenderer;
 
     public delegate void RemovedBox();
     public static event RemovedBox onRemoveBox;
@@ -16,6 +17,7 @@ public class Box : MonoBehaviour
     {
         explosionObject = Object.Instantiate(explosionPrefab, transform.position, transform.rotation);
         ps = explosionObject.GetComponent<ParticleSystem>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,7 +25,8 @@ public class Box : MonoBehaviour
             onRemoveBox();
 
         ps.Play();
-        Object.Destroy(transform.gameObject);
+        meshRenderer.enabled = false;
+        GetComponent<Rigidbody>().detectCollisions = false;
         StartCoroutine(destroyExplosionObject());
     }
 
@@ -31,5 +34,6 @@ public class Box : MonoBehaviour
     {
         yield return new WaitForSeconds(timeInSecondsRemoveExplosion);
         Object.Destroy(explosionObject);
+        Object.Destroy(transform.gameObject);
     }
 }

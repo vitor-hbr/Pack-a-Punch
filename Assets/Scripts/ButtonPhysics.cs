@@ -9,6 +9,7 @@ public class ButtonPhysics : MonoBehaviour
     private bool isPressed;
     private Vector3 startPosition;
     private ConfigurableJoint joint;
+    private SoundController soundController;
 
     public UnityEvent onPressed, onReleased;
 
@@ -16,6 +17,7 @@ public class ButtonPhysics : MonoBehaviour
     {
         startPosition = transform.localPosition;
         joint = GetComponent<ConfigurableJoint>();
+        soundController = GetComponent<SoundController>();
     }
 
     void Update()
@@ -29,6 +31,7 @@ public class ButtonPhysics : MonoBehaviour
     private void Pressed()
     {
         isPressed = true;
+        soundController.play();
         onPressed.Invoke();
     }
 

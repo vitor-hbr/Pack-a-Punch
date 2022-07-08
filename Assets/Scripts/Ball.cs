@@ -7,6 +7,8 @@ public class Ball : MonoBehaviour
     [SerializeField] float distance = 500f;
     [SerializeField] Material OriginalMaterial;
     [SerializeField] Material FrozenMaterial;
+    private SoundController freezeSound;
+    private SoundController hitSound;
     private bool isFrozen;
     private Vector3 initialPosition;
     private Rigidbody rb;
@@ -15,6 +17,8 @@ public class Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
+        hitSound = GetComponent<SoundController>();
+        freezeSound = transform.parent.gameObject.GetComponent<SoundController>();
         initialPosition = transform.localPosition;
     }
     void Update()
@@ -32,6 +36,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
+            freezeSound.play();
             rb.constraints = RigidbodyConstraints.FreezeAll;
             meshRenderer.material = FrozenMaterial;
         }
@@ -39,6 +44,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        hitSound.play();
         if (isFrozen)
             toggleFreeze();
     }

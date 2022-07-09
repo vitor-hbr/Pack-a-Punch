@@ -27,13 +27,7 @@ public class Box : MonoBehaviour
         ps.Play();
         meshRenderer.enabled = false;
         GetComponent<Rigidbody>().detectCollisions = false;
-        StartCoroutine(destroyExplosionObject());
-    }
-
-    private IEnumerator destroyExplosionObject()
-    {
-        yield return new WaitForSeconds(timeInSecondsRemoveExplosion);
-        Object.Destroy(explosionObject);
-        Object.Destroy(transform.gameObject);
+        Object.Destroy(explosionObject, timeInSecondsRemoveExplosion);
+        Object.Destroy(transform.gameObject, timeInSecondsRemoveExplosion);
     }
 }

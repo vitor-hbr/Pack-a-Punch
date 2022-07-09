@@ -8,4 +8,4 @@ To interact with the menu use the joystick to make the interaction ray appear.
 
 Currently the options are not being applied, will implement that soon!
 
-Download the game in my Itch.io: https://vitor-hbr.itch.io/trowers
+Download the game in my Itch.io: https://vitor-hbr.itch.io/throwers

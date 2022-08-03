@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XRRayInteractorController : MonoBehaviour
 {
     [SerializeField] private InputActionReference activateReference = null;
+    [SerializeField] private InputActionReference select = null;
 
     private XRRayInteractor rayInteractor = null;
     private bool isEnabled = false;

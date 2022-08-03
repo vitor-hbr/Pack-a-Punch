@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OptionsSettings : MonoBehaviour
 {
     public enum MovementEnum {
-        continous,
+        continuous,
         teleport
     }
     public enum TurningEnum
@@ -15,8 +15,8 @@ public class OptionsSettings : MonoBehaviour
         snap
     }
 
-    [SerializeField] GameObject ContinousToggleGO;
-    Toggle ContinousToggle;
+    [SerializeField] GameObject continuousToggleGO;
+    Toggle continuousToggle;
     [SerializeField] GameObject TeleportToggleGO;
     Toggle TeleportToggle;
     [SerializeField] GameObject SmoothToggleGO;
@@ -32,7 +32,7 @@ public class OptionsSettings : MonoBehaviour
     Slider volumeMusicSlider;
 
 
-    MovementEnum movement = MovementEnum.continous;
+    MovementEnum movement = MovementEnum.continuous;
     TurningEnum turning = TurningEnum.smooth;
     float turningAmount = 50f;
     float volumeSFX = 0.25f;
@@ -40,8 +40,8 @@ public class OptionsSettings : MonoBehaviour
 
     private void Start()
     {
-        ContinousToggle = ContinousToggleGO.GetComponent<Toggle>();
-        ContinousToggle.isOn = movement == MovementEnum.continous;
+        continuousToggle = continuousToggleGO.GetComponent<Toggle>();
+        continuousToggle.isOn = movement == MovementEnum.continuous;
 
         TeleportToggle = TeleportToggleGO.GetComponent<Toggle>();
         TeleportToggle.isOn = movement == MovementEnum.teleport;
@@ -62,52 +62,64 @@ public class OptionsSettings : MonoBehaviour
         volumeMusicSlider.value = volumeMusic;
     }
 
-    public void setMovementContinous(bool value)
+    public void setMovementcontinuous(bool value)
     {
-        movement = MovementEnum.continous;
-        ContinousToggle.isOn = value;
+        continuousToggle.isOn = value;
         TeleportToggle.isOn = !value;
+        if (value)
+        {
+            movement = MovementEnum.continuous;
+            PlayerPrefs.SetInt("movement", (int)movement);
+        }
     }
     public void setMovementTeleport(bool value)
     {
-        movement = MovementEnum.continous;
         TeleportToggle.isOn = value;
-        ContinousToggle.isOn = !value;
+        continuousToggle.isOn = !value;
+        if(value)
+        {
+            movement = MovementEnum.teleport;
+            PlayerPrefs.SetInt("movement", (int)movement);
+        }
     }
     public void setTurningSmooth(bool value)
     {
-        turning = TurningEnum.smooth;
         SmoothToggle.isOn = value;
         SnapToggle.isOn = !value;
+        if (value)
+        {
+            turning = TurningEnum.smooth;
+            PlayerPrefs.SetInt("turning", (int)turning);
+        }
     }
     public void setTurningSnap(bool value)
     {
-        turning = TurningEnum.snap;
         SnapToggle.isOn = value;
         SmoothToggle.isOn = !value;
+        if (value)
+        {
+            turning = TurningEnum.snap;
+            PlayerPrefs.SetInt("turning", (int)turning);
+        }
     }
 
     public void setTurningAmount(float value)
     {
         turningAmount = value;
+        PlayerPrefs.SetFloat("turningAmount", turningAmount);
     }
 
     public void setSFXVolume(float value)
     {
         volumeSFX = value;
+        PlayerPrefs.SetFloat("volumeSFX", volumeSFX);
     }
     public void setMusicVolume(float value)
     {
         volumeMusic = value;
-    }
-    public void saveSettings()
-    {
-        PlayerPrefs.SetFloat("turningAmount", turningAmount);
-        PlayerPrefs.SetFloat("volumeSFX", volumeSFX);
         PlayerPrefs.SetFloat("volumeMusic", volumeMusic);
-        PlayerPrefs.SetInt("movement", (int) movement);
-        PlayerPrefs.SetInt("turning", (int) turning);
     }
+
     public void loadSettings()
     {
        turningAmount = PlayerPrefs.GetFloat("turningAmount", turningAmount);

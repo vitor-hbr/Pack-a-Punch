@@ -6,7 +6,7 @@ using static OptionsSettings;
 
 public class ChangeScene : MonoBehaviour
 {
-    MovementEnum movement = MovementEnum.continous;
+    MovementEnum movement = MovementEnum.continuous;
     TurningEnum turning = TurningEnum.smooth;
     float turningAmount = 50f;
     float volumeSFX = 0.25f;

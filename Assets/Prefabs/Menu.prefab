@@ -975,7 +975,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8890581272962319008}
         m_TargetAssemblyTypeName: OptionsSettings, Assembly-CSharp
-        m_MethodName: setMovementContinous
+        m_MethodName: setMovementcontinuous
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1907,18 +1907,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8890581272962319008}
-        m_TargetAssemblyTypeName: OptionsSettings, Assembly-CSharp
-        m_MethodName: saveSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8890581272657068394}
         m_TargetAssemblyTypeName: EnablePage, Assembly-CSharp
         m_MethodName: activatePage
@@ -2062,7 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bc87a6af183244f8c0b5dc46f6649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContinousToggleGO: {fileID: 8890581272398263776}
+  continuousToggleGO: {fileID: 0}
   TeleportToggleGO: {fileID: 8890581273188830167}
   SmoothToggleGO: {fileID: 8890581272483643808}
   SnapToggleGO: {fileID: 8890581273229550066}

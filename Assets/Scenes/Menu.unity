@@ -628,6 +628,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1841935920}
+    - target: {fileID: 3528469889990043658, guid: b86aa02a0caccfe4d8f1ca22091af9d7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2acbe8ad8f1d8524d81a396bbf36308e, type: 2}
     - target: {fileID: 3528469890899366564, guid: b86aa02a0caccfe4d8f1ca22091af9d7, type: 3}
       propertyPath: m_Name
       value: XR Origin
@@ -680,6 +684,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1841935920}
+    - target: {fileID: 3528469891618923386, guid: b86aa02a0caccfe4d8f1ca22091af9d7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2acbe8ad8f1d8524d81a396bbf36308e, type: 2}
     - target: {fileID: 3528469891696480715, guid: b86aa02a0caccfe4d8f1ca22091af9d7, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -833,6 +841,10 @@ PrefabInstance:
       propertyPath: turningAmountGO
       value: 
       objectReference: {fileID: 539458148}
+    - target: {fileID: 8890581272962319008, guid: 3a54cff6340cc414cba3755456ed0f5f, type: 3}
+      propertyPath: continuousToggleGO
+      value: 
+      objectReference: {fileID: 8890581272790028488}
     - target: {fileID: 8890581272962319010, guid: 3a54cff6340cc414cba3755456ed0f5f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -859,3 +871,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a54cff6340cc414cba3755456ed0f5f, type: 3}
+--- !u!1 &8890581272790028488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8890581272398263776, guid: 3a54cff6340cc414cba3755456ed0f5f, type: 3}
+  m_PrefabInstance: {fileID: 8890581272790028487}
+  m_PrefabAsset: {fileID: 0}
